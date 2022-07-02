@@ -24,7 +24,14 @@ class MyApp extends StatelessWidget {
 }
 
 void _pushSaved() {
-  Navigator.push(MaterialPage)
+  Navigator.push(MaterialPageRoute<void>)(
+    builder: (context) {
+      return Scaffold(
+        appBar: AppBar(title: "Saved"),
+        body: Container()
+      )
+    }
+  )
 }
 
 class RandomWords extends StatefulWidget {
