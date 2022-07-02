@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: RandomWords();
+      home: RandomWords(),
     );
   }
 }
@@ -34,7 +34,7 @@ class _RandomWordsState extends State<RandomWords> {
       appBar: AppBar(
         title: Text("StartApp Generator"),
         actions: [
-          IconButton(onPressed: _pushSaved {}, icon: Icon(Icons.list))
+          IconButton(onPressed: _pushSaved, icon: Icon(Icons.list))
         ],),
       body:  ListView.builder(itemBuilder: (context, i) {
         if (i.isOdd) return const Divider();
