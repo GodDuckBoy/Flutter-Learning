@@ -12,11 +12,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("StartApp Generator"),),
+        appBar: AppBar(
+          title: Text("StartApp Generator"),
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.list))
+          ],),
         body: Center(child: RandomWords()),
       ),
     );
   }
+}
+
+void _pushSaved() {
+  Navigator.push(MaterialPage)
 }
 
 class RandomWords extends StatefulWidget {
@@ -45,7 +53,19 @@ class _RandomWordsState extends State<RandomWords> {
         _suggestions[index].asPascalCase,
         style: _biggerFont,
       ),
-      trailing: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border),
+      trailing: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,),
+        onTap: () {
+          setState(() {
+            if (alreadySaved) {
+              _saved.remove(_suggestions[index]);
+            }
+            else {
+              _saved.add(_suggestions[index]);
+            }
+          }
+          );
+        },
       );
     });
   }
