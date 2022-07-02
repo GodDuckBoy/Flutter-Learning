@@ -34,7 +34,7 @@ class _RandomWordsState extends State<RandomWords> {
       appBar: AppBar(
         title: Text("StartApp Generator"),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.list))
+          IconButton(onPressed: _pushSaved {}, icon: Icon(Icons.list))
         ],),
       body:  ListView.builder(itemBuilder: (context, i) {
         if (i.isOdd) return const Divider();
@@ -67,13 +67,21 @@ class _RandomWordsState extends State<RandomWords> {
 
   }
   void _pushSaved() {
-    Navigator.push(MaterialPageRoute<void>)(
-        builder: (context) {
-          return Scaffold(
-              appBar: AppBar(title: "Saved"),
-              body: Container()
-          );
-        }
+    Navigator.of(context).push(
+        MaterialPageRoute<void> (
+            builder: (context) {
+
+              final tiles = _saved.map((pair) {
+                return ListTile(
+                  title: Text(pair.asPascalCase),
+                );
+              });
+              return Scaffold(
+                  appBar: AppBar(title: Text("Saved"),),
+                  body: ListView(children: tiles.toList(),),
+              );
+            }
+        )
     );
   }
 }
